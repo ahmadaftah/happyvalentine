@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>For You ❤️</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Patrick+Hand&family=Fredoka+One&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <div class="cloud-bg"></div>
+    <div class="heart-bg" id="heart-bg"></div>
+
+
+    <!-- PAGE 0: Intro -->
+    <div class="container" id="page0">
+        <div class="gif-container">
+            <img src="https://media4.giphy.com/media/v1.Y2lkPTc5MGI3NjExNW5sc3EzanM3Ymd6NXFsamZ5bGRjcGFtN3ZtczdsdjA5NzE3MXl2byZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/IzXiddo2twMmdmU8Lv/giphy.gif"
+                alt="Cute Cat">
+        </div>
+        <h1>HAPPY VALENTINES, MYLOVE</h1>
+        <p class="subtitle">Will you be my valentine?</p>
+        <div class="buttons">
+            <button class="circle-btn cross" onclick="handleIntro('no')">✖</button>
+            <button class="circle-btn check" onclick="handleIntro('yes')">✔</button>
+        </div>
+    </div>
+
+    <!-- PAGE 1: Intro (You can't say no) -->
+    <div class="container hidden" id="page1">
+        <div class="gif-container">
+            <!-- Mochi cat shy/sleeping -->
+            <img src="https://media0.giphy.com/media/v1.Y2lkPTc5MGI3NjExdzl6MjNvcXAzeGlxc2NicnR6eng0MDBubmRvMHU5ZTQyc3V6aGFveiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/KztT2c4u8mYYUiMKdJ/giphy.gif"
+                alt="Shy Cat">
+        </div>
+        <h1>HEY ... YOU CAN'T SAY NO TO ME TODAY</h1>
+        <div class="buttons">
+            <button onclick="goToPage2()">Okay fine, YES</button>
+        </div>
+    </div>
+
+    <!-- PAGE 2: Success -->
+    <div class="container hidden" id="page2">
+        <div class="gif-container">
+            <!-- Happy dancing cat -->
+            <img src="https://media1.giphy.com/media/v1.Y2lkPTc5MGI3NjExamgxbjgzbnlqdmJzNTY2ZGJoOWlrbTBxcWF6MnNqNnM5NnplYTNmZiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/8Fxae36AvVFSpgOTFO/giphy.gif"
+                alt="Happy Cat">
+        </div>
+        <h1 class="pink-text">YEYYY! YOU GOT IT!</h1>
+        <p class="subtitle">Of course you would.</p>
+        <div class="buttons">
+            <button onclick="goToPage3()">Continue</button>
+        </div>
+    </div>
+
+    <!-- PAGE 3: Final Pattern -->
+    <div class="container full-width hidden" id="page3">
+        <p class="instruction" style="text-align:center">(Choose one of the memories to continue)</p>
+        <div class="cat-pattern">
+            <div class="choice-card c1" style="--i:1" onclick="openLetterOverlay()">
+                <img src="https://media4.giphy.com/media/v1.Y2lkPTc5MGI3NjExN2VoazM5NTFwbGxmdzFpY3VheWdlM2JqNWtwamVsemJwd3NzcHVxbiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/KDteE5sy0H1gW8kxQV/giphy.gif"
+                    class="p-cat">
+            </div>
+            <div class="choice-card c2" style="--i:2" onclick="openArticleOverlay()">
+                <img src="https://media4.giphy.com/media/v1.Y2lkPTc5MGI3NjExYjBlbnY2ZjJybWJ6NW9ienowNXQ3cndwN3N1Y2Z1MWxxeDVpeGN4ZCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/H5Ad3kUEUSiYhbCrNH/giphy.gif"
+                    class="p-cat">
+            </div>
+            <div class="choice-card c3" style="--i:3" onclick="openGallery()">
+                <img src="https://media3.giphy.com/media/v1.Y2lkPTc5MGI3NjExOW01MmV2cWR6cjFydWhja3l3dXgzaXM2dDVlMDZnajQ1c2Q2OGN3ZiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/h7G0R3b5ZwmAZ9y4gE/giphy.gif"
+                    class="p-cat">
+            </div>
+            <div class="choice-card c4" style="--i:4" onclick="openGiftOverlay()">
+                <img src="https://media1.giphy.com/media/v1.Y2lkPTc5MGI3NjExYzh1ajk3OGdyMWtoNXNsN3RqNzlpZmNzM3ZmNDA2YzNqN2V3NjJ2dCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/hVle3v01CScLyGRe0i/giphy.gif"
+                    class="p-cat">
+            </div>
+        </div>
+
+        <!-- LOVE LETTER OVERLAY -->
+        <div id="letter-overlay" class="letter-overlay hidden">
+            <button onclick="closeLetterOverlay()" class="btn-back-top">&larr; Back</button>
+            <div class="overlay-header">
+                <h1 class="overlay-title">JUST FOR YOU</h1>
+            </div>
+            <div class="envelope-wrapper" onclick="openFullLetter()">
+                <img src="https://media.tenor.com/2Xy-g-xS72AAAAAj/mochi-cat-love.gif" class="decor-cat d-left">
+                <img src="https://media.tenor.com/fS_Gz_zR-UAAAAAj/mochi-cat.gif" class="decor-cat d-right">
+                <div id="envelope" class="envelope">
+                    <div class="front flap"></div>
+                    <div class="front pocket"></div>
+                    <div class="letter">
+                        <div class="letter-content">
+                            <p><strong>Dear My Valentine,</strong></p>
+                            <p>Loving you has been my favorite journey. Through the quiet days and the loud ones,
+                                choosing you always feels right.</p>
+                            <p>You make ordinary moments feel special just by being there.</p>
+                            <p>I Love You! ❤️</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="overlay-buttons">
+                <!-- No See Our Memories button as requested -->
+            </div>
+        </div>
+
+        <!-- ARTICLE OVERLAY (Feature 2) -->
+        <div id="article-overlay" class="letter-overlay hidden">
+            <button onclick="closeArticleOverlay()" class="btn-back-top"
+                style="color: #d00000 !important; border-color: #d00000 !important;">&larr; Back</button>
+
+            <div class="article-container">
+                <div class="photo-section">
+                    <!-- Clean 2x2 Polaroid Grid with Local Photos -->
+                    <img src="assets/foto1.jpg" class="strip-img">
+                    <img src="assets/foto2.jpg" class="strip-img">
+                    <img src="assets/foto3.jpg" class="strip-img">
+                    <img src="assets/foto4.jpg" class="strip-img">
+                    <img src="assets/art1.png" class="strip-img">
+                    <img src="assets/art2.png" class="strip-img">
+                    <img src="assets/art3.png" class="strip-img">
+                    <img src="assets/art4.png" class="strip-img">
+                    <img src="assets/art5.png" class="strip-img">
+                    <img src="assets/art6.png" class="strip-img">
+                </div>
+
+                <div class="article-content-box">
+                    <h1 class="article-title">HAPPY VALENTINE'S DAY! ❤️</h1>
+                    <div class="article-body">
+                        <p>Kadang aku mikir, gimana bisa aku seberuntung ini punya kamu. Even from a distance, you still
+                            make my days feel special. Walaupun kita nggak selalu bisa bareng secara langsung, setiap
+                            call, setiap chat kecil kita, itu udah cukup bikin aku ngerasa tenang. Cara kamu cerita
+                            hal-hal random, cara kamu ketawa, bahkan cara kamu ngingetin aku hal kecil, semuanya berarti
+                            banget buat aku.</p>
+
+                        <p>Sometimes I don’t say it enough, but you really mean so much to me. You’re not just my
+                            girlfriend, you’re my safe place, tempat aku cerita tanpa takut dihakimi dan tempat aku
+                            pulang walaupun cuma lewat suara di telepon.</p>
+
+                        <p>With you, everything feels lighter. Masalah nggak terasa seberat itu kalau aku tahu ada kamu
+                            di sisi aku, dan bahkan di hari-hari terburukku kamu selalu jadi alasan kenapa aku bisa
+                            senyum lagi.</p>
+
+                        <p>Aku tahu hubungan kita nggak selalu sempurna, kadang ada salah paham, kadang capek, kadang
+                            overthinking, but one thing I’m sure about, aku nggak pernah ragu buat milih kamu. Aku nggak
+                            cuma sayang kamu hari ini, but every single day, in every little way.</p>
+
+                        <p>Thank you for staying, thank you for being patient with me, and thank you for loving me the
+                            way you do. No matter how far we are right now, my heart is always with you, and I promise
+                            I’ll keep choosing you today, tomorrow, and for as long as you’ll let me. I love you,
+                            always. 🤍</p>
+                        <div style="height: 100px;"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- REASONS OVERLAY -->
+        <div id="reasons-overlay" class="letter-overlay hidden">
+            <button onclick="closeReasonsOverlay()" class="btn-back-top">&larr; Back</button>
+            <h1 class="overlay-title" style="margin-top: 50px;">WHY I LOVE YOU</h1>
+            <div class="reasons-list">
+                <div class="reason-card">
+                    <h3>Your Smile</h3>
+                    <p>It brightens up my darkest days instantly.</p>
+                </div>
+                <div class="reason-card">
+                    <h3>Your Kindness</h3>
+                    <p>You have the purest heart I've ever known.</p>
+                </div>
+                <div class="reason-card">
+                    <h3>Your Laughter</h3>
+                    <p>It's my favorite sound in the whole world.</p>
+                </div>
+                <div class="reason-card">
+                    <h3>Us</h3>
+                    <p>I just love being with you, doing anything or nothing at all.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- GIFT OVERLAY -->
+        <div id="gift-overlay" class="letter-overlay hidden">
+            <button onclick="closeGiftOverlay()" class="btn-back-top">&larr; Back</button>
+            <h1 class="overlay-title" style="margin-top: 50px;">LOVE MISSION</h1>
+
+            <!-- STAGE 1: CATCH HEARTS -->
+            <div id="stage1-screen" class="game-content">
+                <h2>Level 1</h2>
+                <p>Catch 10 hearts to prove your love!</p>
+                <button class="btn-start-game" onclick="startStage1()">START LEVEL 1</button>
+            </div>
+
+            <div id="game-ui-stage1" class="hidden">
+                <h2 class="score-display">Hearts: <span id="score">0</span>/10</h2>
+                <div id="game-area"></div>
+            </div>
+
+            <!-- STAGE 2: CHASE THE CAT -->
+            <div id="stage2-screen" class="game-content hidden">
+                <h2>Level 2</h2>
+                <p>Catch the cheeky cat! Click him 3 times.</p>
+                <button class="btn-start-game" onclick="startStage2()">START LEVEL 2</button>
+            </div>
+
+            <div id="game-ui-stage2" class="hidden" style="position:relative; width:100%; height:300px;">
+                <h2 class="score-display">Kucing Ditangkap: <span id="cat-score">0</span>/3</h2>
+                <img src="https://media4.giphy.com/media/v1.Y2lkPTc5MGI3NjExN2VoazM5NTFwbGxmdzFpY3VheWdlM2JqNWtwamVsemJwd3NzcHVxbiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/KDteE5sy0H1gW8kxQV/giphy.gif"
+                    id="chase-cat" class="chase-cat" onclick="clickCat()">
+            </div>
+
+            <!-- STAGE 3: QUIZ -->
+            <div id="stage3-screen" class="game-content hidden">
+                <h2>Level 3: Final Question</h2>
+                <p>Who do you love the most in the world?</p>
+                <div class="quiz-options">
+                    <button class="btn-quiz" onclick="wrongAnswer(this)">Food 🍕</button>
+                    <button class="btn-quiz" onclick="correctAnswer()">YOU! ❤️</button>
+                    <button class="btn-quiz" onclick="wrongAnswer(this)">Sleep 😴</button>
+                </div>
+            </div>
+
+            <!-- The Reward (Initially Hidden) -->
+            <div class="gift-container hidden" id="gift-container">
+                <div class="gift-box-css" id="gift-box-img" onclick="openGift()">
+                    <div class="gift-lid"></div>
+                    <div class="gift-container-inner"></div>
+                    <div class="gift-ribbon"></div>
+                    <div class="gift-bow"></div>
+                </div>
+                <div class="gift-message hidden" id="gift-message">
+                    <img src="https://media.tenor.com/uJggd8ynNqAAAAAj/mochi-cat-hearts.gif" class="gift-reveal-img">
+                    <h2>SURPRISE! 🎁</h2>
+                    <p style="font-size: 1.5rem; color: #ff4d6d; font-weight: bold;">
+                        nantii ada surprise buat kamuu tunggu aja yaa
+                    </p>
+                    <p>Mohon di tunggu ya sayangg! ❤️</p>
+                    <p class="small-text">(Sabar yaaa! 🥰)</p>
+                </div>
+            </div>
+        </div>
+        <!-- GALLERY OVERLAY (Feature 3) -->
+        <div id="gallery-overlay" class="letter-overlay hidden">
+            <button onclick="closeGallery()" class="btn-back-top">&larr; Back</button>
+
+            <div class="gallery-container">
+                <h1 style="margin-bottom: 20px;">OUR MEMORIES</h1>
+                <div class="gallery-grid">
+                    <div class="polaroid rotate-left">
+                        <img src="assets/foto5.png" alt="Memory">
+                    </div>
+                    <div class="polaroid rotate-right">
+                        <img src="assets/foto6.jpg" alt="Memory">
+                    </div>
+                    <div class="polaroid rotate-left">
+                        <img src="assets/foto7.jpg" alt="Memory">
+                    </div>
+                    <div class="polaroid rotate-right">
+                        <img src="assets/foto8.png" alt="Memory">
+                    </div>
+                    <div class="polaroid rotate-left">
+                        <img src="assets/foto9.jpg" alt="Memory">
+                    </div>
+                    <div class="polaroid rotate-right">
+                        <img src="assets/foto10.png" alt="Memory">
+                    </div>
+                    <div class="polaroid rotate-left">
+                        <img src="assets/foto11.png" alt="Memory">
+                    </div>
+                    <div class="polaroid rotate-right">
+                        <img src="assets/foto12.png" alt="Memory">
+                    </div>
+                    <div class="polaroid rotate-left">
+                        <img src="assets/foto13.png" alt="Memory">
+                    </div>
+                    <div class="polaroid rotate-right">
+                        <img src="assets/foto14.png" alt="Memory">
+                    </div>
+                    <div class="polaroid rotate-left">
+                        <img src="assets/foto15.png" alt="Memory">
+                    </div>
+                    <div class="polaroid rotate-right">
+                        <img src="assets/foto16.png" alt="Memory">
+                    </div>
+                    <div class="polaroid rotate-left">
+                        <img src="assets/foto17.png" alt="Memory">
+                    </div>
+                    <div class="polaroid rotate-right">
+                        <img src="assets/foto18.png" alt="Memory">
+                    </div>
+                    <div class="polaroid rotate-left">
+                        <img src="assets/foto19.png" alt="Memory">
+                    </div>
+                    <div class="polaroid rotate-right">
+                        <img src="assets/foto20.png" alt="Memory">
+                    </div>
+                    <div class="polaroid rotate-left">
+                        <img src="assets/foto21.png" alt="Memory">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container hidden" id="page4">
+        <div class="gif-container">
+            <img src="https://media2.giphy.com/media/v1.Y2lkPTc5MGI3NjExY3gwNTAwbDgyZ3RtN2p6dGswbzZra2hhcms5OXlzbmxvcmVpcXV0OCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/wPnbkEcr2tXiTN0Lmq/giphy.gif"
+                alt="Waiting Cat">
+        </div>
+        <h1>ONE LAST STEP, LOVE</h1>
+        <p class="subtitle" style="font-size: 1rem;">This page is protected by a memory only we know.<br>ENTER OUR
+            MONTHSARY TO CONTINUE</p>
+
+        <div class="pin-display">
+            <div class="pin-dot" id="dot1"></div>
+            <div class="pin-dot" id="dot2"></div>
+            <div class="pin-dot" id="dot3"></div>
+            <div class="pin-dot" id="dot4"></div>
+        </div>
+        <p id="error-msg" style="color:red; display:none; font-size: 0.9rem;">Wrong date! Try again (Hint: 1223)</p>
+
+        <div class="keypad">
+            <button class="keyor" onclick="addPin(1)">1</button>
+            <button class="keyor" onclick="addPin(2)">2</button>
+            <button class="keyor" onclick="addPin(3)">3</button>
+            <button class="keyor" onclick="addPin(4)">4</button>
+            <button class="keyor" onclick="addPin(5)">5</button>
+            <button class="keyor" onclick="addPin(6)">6</button>
+            <button class="keyor" onclick="addPin(7)">7</button>
+            <button class="keyor" onclick="addPin(8)">8</button>
+            <button class="keyor" onclick="addPin(9)">9</button>
+            <button class="keyor" style="visibility:hidden"></button>
+            <button class="keyor" onclick="addPin(0)">0</button>
+            <button class="keyor" onclick="clearPin()">⌫</button>
+        </div>
+    </div>
+
+    <!-- PAGE 6: Gallery -->
+    <div class="container full-width hidden" id="page6">
+        <!-- Back button dynamically added by script, but we can also hardcode it for consistency if preferred, 
+             but script handles it. Let's stick to script handling or add a fixed one inside the container. 
+             The script adds it to #page6 directly. -->
+
+        <div class="gallery-container">
+            <h1 style="margin-bottom: 20px;">OUR MEMORIES</h1>
+            <div class="gallery-grid">
+                <div class="polaroid rotate-left">
+                    <img src="assets/foto5.png" alt="Memory">
+                </div>
+                <div class="polaroid rotate-right">
+                    <img src="assets/foto6.jpg" alt="Memory">
+                </div>
+                <div class="polaroid rotate-left">
+                    <img src="assets/foto7.jpg" alt="Memory">
+                </div>
+                <div class="polaroid rotate-right">
+                    <img src="assets/foto8.png" alt="Memory">
+                </div>
+                <div class="polaroid rotate-left">
+                    <img src="assets/foto9.jpg" alt="Memory">
+                </div>
+                <div class="polaroid rotate-right">
+                    <img src="assets/foto10.png" alt="Memory">
+                </div>
+                <div class="polaroid rotate-left">
+                    <img src="assets/foto11.png" alt="Memory">
+                </div>
+                <div class="polaroid rotate-right">
+                    <img src="assets/foto12.png" alt="Memory">
+                </div>
+                <div class="polaroid rotate-left">
+                    <img src="assets/foto13.png" alt="Memory">
+                </div>
+                <div class="polaroid rotate-right">
+                    <img src="assets/foto14.png" alt="Memory">
+                </div>
+                <div class="polaroid rotate-left">
+                    <img src="assets/foto15.png" alt="Memory">
+                </div>
+                <div class="polaroid rotate-right">
+                    <img src="assets/foto16.png" alt="Memory">
+                </div>
+                <div class="polaroid rotate-left">
+                    <img src="assets/foto17.png" alt="Memory">
+                </div>
+                <div class="polaroid rotate-right">
+                    <img src="assets/foto18.png" alt="Memory">
+                </div>
+                <div class="polaroid rotate-left">
+                    <img src="assets/foto19.png" alt="Memory">
+                </div>
+                <div class="polaroid rotate-right">
+                    <img src="assets/foto20.png" alt="Memory">
+                </div>
+                <div class="polaroid rotate-left">
+                    <img src="assets/foto21.png" alt="Memory">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Spotify-style Mini Player -->
+    <div id="mini-player" class="mini-player">
+        <div class="player-content">
+            <div class="track-info">
+                <span class="track-name" id="display-track-name">You Belong With Me</span>
+                <span class="artist-name" id="display-artist-name">Taylor Swift</span>
+            </div>
+            <div class="controls">
+                <button class="nav-btn" onclick="prevTrack()">
+                    <span style="color:white;">❮</span>
+                </button>
+                <button id="play-pause-btn" class="control-btn" onclick="toggleMusic()">
+                    <span id="music-icon" style="color:white; margin-left:3px;">▶</span>
+                </button>
+                <button class="nav-btn" onclick="nextTrack()">
+                    <span style="color:white;">❯</span>
+                </button>
+            </div>
+        </div>
+        <div class="progress-container" onclick="seek(event)">
+            <div id="progress-bar" class="progress-bar"></div>
+        </div>
+        <div class="time-display">
+            <span id="current-time">0:00</span> / <span id="total-duration">0:00</span>
+        </div>
+    </div>
+    <!-- Native Audio Player -->
+    <audio id="audio-player" src="assets/youbelongwithme.mp3" class="music-player"></audio>
+
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+    <script src="script.js"></script>
+</body>
+
+</html>
